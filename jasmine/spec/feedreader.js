@@ -74,44 +74,20 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-      // it("is hidden when clicked and visible when clicked again.", function(){
-        // var clickBool = function() {
-        //   return $("body").hasClass("menu-hidden");}
-        // var clickSave = clickBool();
-        // var radioButton = function(){
-        //   return $("body").hasClass("menu-hidden");};
-        // expect($(".menu-icon-link").click(function(){
-        //     var check = radioButton();
-        //     if (check===true){
-        //       console.log("menu is hidden");
-        //       return true;
-        //     }
-        //     else{
-        //       console.log("menu is not hidden")
-        //       return false;
-        //     }
-        // })).toBe(true);
-        // recording of the class before click
+        /*  https://gist.github.com/davilious/9503539 Using trigger functionality
+        of jquery to trigger the click event two times on the icon
+        */
+         it ("should toggle class menu-hidden when menuIcon is clicked", function(){
+            $trigger=$('.menu-icon-link');
+            $body = $('body');
+            // click first time toggleClass
+            $trigger.trigger('click');
+            expect($body.hasClass('')).toBe(true);
 
-        // var previousClass=$('.menu-icon-link');
-        // var clickCount=0;
-        // var counter=$('.menu-icon-link').on('click', function() {return clickCount=clickCount+1;});
-        // // whenever clicked record the class of the click icon
-        // var clickedClass=$('.menu-icon-link').on('click', function() {return $(".menu-icon-link");});
-        //
-        // expect(clickCount%2===0 && $(".menu-icon-link").hasClass('')).toBe(true);
-        // expect(clickCount%2!==0 && $(".menu-icon-link").hasClass('menu-hidden')).toBe(true);
-
-        // $('.menu-icon-link').on('click', function() {
-        //       if (clickCount%2!=0){
-        //         $('body').hasClass('menu-hidden');
-        //         console.log("is hidden");}
-        //       else {
-        //         $('body').hasClass('menu-hidden');
-        //         console.log("is not hidden");}
-        //
-        //   });
-      // });
+            // click second time
+            $trigger.trigger('click');
+            expect($body.hasClass('menu-hidden')).toBe(true);
+          });
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
