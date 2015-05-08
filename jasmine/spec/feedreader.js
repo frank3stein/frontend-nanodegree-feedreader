@@ -95,6 +95,32 @@ $(function() {
           */
     });
     /* TODO: Write a new test suite named "Initial Entries" */
+    describe("Initial entries", function(){
+
+      var $feedArray=[],
+          $newFeedArray,
+          /*
+          For the foreach function creating an array in order to use inside
+          to compare different old and new array
+          */
+          a=[],
+          b=0;
+          while(b<4){
+            a[b]=b;
+            b++;
+          };
+      beforeEach(function(done){
+        loadFeed(0, function(){
+          $feedArray = $(".feed .entry");
+          done();
+        });
+      });
+
+      it("have at least one entry after the loadfeed function is done", function(done){
+        expect($feedArray.length!=0).toBe(true);
+        done();
+      });
+
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -102,7 +128,55 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test wil require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+         
+      // The last test suite could be included in the previous tests as they share
+      // beforeeach section
 
+      // it("have changed the content in the website", function(done){
+      //
+      //     loadFeed(1, function(){
+      //       $newFeedArray = $(".feed .entry");
+      //       // trick to compare both of the arrays using forEach
+      //       a.forEach(function(feed){
+      //         expect($feedArray[feed].innerText!=$newFeedArray[feed].innerText).toBe(true);
+      //         });
+      //       // expect($feedArray[0].innerText!=$newFeedArray[0].innerText).toBe(true);
+      //       done();
+      //   });
+      // });
+    });
+    describe("New Feed Selection",function(){
+      var $feedArray=[],
+          $newFeedArray,
+          /*
+          For the foreach function creating an array in order to use inside
+          to compare different old and new array
+          */
+          a=[],
+          b=0;
+          while(b<4){
+            a[b]=b;
+            b++;
+          };
+      beforeEach(function(done){
+        loadFeed(0, function(){
+          $feedArray = $(".feed .entry");
+          done();
+        });
+      });
+      it("have changed the content in the website", function(done){
+
+          loadFeed(1, function(){
+            $newFeedArray = $(".feed .entry");
+            // trick to compare both of the arrays using forEach
+            a.forEach(function(feed){
+              expect($feedArray[feed].innerText!=$newFeedArray[feed].innerText).toBe(true);
+              });
+            // expect($feedArray[0].innerText!=$newFeedArray[0].innerText).toBe(true);
+            done();
+        });
+      });
+    });
     /* TODO: Write a new test suite named "New Feed Selection"
 
         /* TODO: Write a test that ensures when a new feed is loaded
