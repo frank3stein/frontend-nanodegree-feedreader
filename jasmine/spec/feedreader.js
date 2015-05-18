@@ -128,29 +128,17 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test wil require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-         
+
       // The last test suite could be included in the previous tests as they share
       // beforeeach section
 
-      // it("have changed the content in the website", function(done){
-      //
-      //     loadFeed(1, function(){
-      //       $newFeedArray = $(".feed .entry");
-      //       // trick to compare both of the arrays using forEach
-      //       a.forEach(function(feed){
-      //         expect($feedArray[feed].innerText!=$newFeedArray[feed].innerText).toBe(true);
-      //         });
-      //       // expect($feedArray[0].innerText!=$newFeedArray[0].innerText).toBe(true);
-      //       done();
-      //   });
-      // });
     });
     describe("New Feed Selection",function(){
       var $feedArray=[],
           $newFeedArray,
           /*
           For the foreach function creating an array in order to use inside
-          to compare different old and new array
+          to compare difference between old and new array
           */
           a=[],
           b=0;
